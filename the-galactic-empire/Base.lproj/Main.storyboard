@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ry-At-kNo">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Club Search-->
+        <scene sceneID="q9e-mt-VTh">
+            <objects>
+                <tableViewController id="dpu-mc-Ya0" customClass="ClubSearchCTRL" customModule="the_galactic_empire" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="TCL-nU-LHT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="oJP-dA-1YV">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="72" id="0Sq-Kv-4xH" customClass="ClubSearchCell" customModule="the_galactic_empire" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Sq-Kv-4xH" id="qLG-NK-NQ3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEST COAST AVENGERS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txX-yf-cqQ">
+                                            <rect key="frame" x="8" y="8" width="398" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                            <color key="textColor" red="0.25075535220773482" green="0.25075535220773482" blue="0.25075535220773482" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="678-358-23" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlB-3L-uTU">
+                                            <rect key="frame" x="8" y="29" width="398" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.38328729280773477" green="0.38328729280773477" blue="0.38328729280773477" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Division: 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIy-4Q-qqP">
+                                            <rect key="frame" x="8" y="45" width="398" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="lfJ-fy-cR7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.38328729280773477" green="0.38328729280773477" blue="0.38328729280773477" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="lfJ-fy-cR7"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iIy-4Q-qqP" secondAttribute="trailing" id="2Hx-9s-Z1d"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="vlB-3L-uTU" secondAttribute="trailing" id="Gfd-pb-PhK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="txX-yf-cqQ" secondAttribute="trailing" id="HsL-5A-u4A"/>
+                                        <constraint firstItem="vlB-3L-uTU" firstAttribute="top" secondItem="txX-yf-cqQ" secondAttribute="bottom" id="Iff-qd-tg6"/>
+                                        <constraint firstItem="vlB-3L-uTU" firstAttribute="leading" secondItem="qLG-NK-NQ3" secondAttribute="leadingMargin" id="Iz0-kc-UGZ"/>
+                                        <constraint firstItem="txX-yf-cqQ" firstAttribute="top" secondItem="qLG-NK-NQ3" secondAttribute="topMargin" id="KaD-vL-TGc"/>
+                                        <constraint firstItem="iIy-4Q-qqP" firstAttribute="leading" secondItem="qLG-NK-NQ3" secondAttribute="leadingMargin" id="a8S-Uj-mWr"/>
+                                        <constraint firstItem="txX-yf-cqQ" firstAttribute="leading" secondItem="qLG-NK-NQ3" secondAttribute="leadingMargin" id="lxN-9m-KdR"/>
+                                        <constraint firstItem="iIy-4Q-qqP" firstAttribute="top" secondItem="vlB-3L-uTU" secondAttribute="bottom" id="rJd-TX-Jkh"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="divisionTXT" destination="iIy-4Q-qqP" id="XTF-h7-RsV"/>
+                                    <outlet property="nameTXT" destination="txX-yf-cqQ" id="DxZ-FR-qXZ"/>
+                                    <outlet property="recordTXT" destination="vlB-3L-uTU" id="Sot-db-M6a"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dpu-mc-Ya0" id="fB8-rJ-f2F"/>
+                            <outlet property="delegate" destination="dpu-mc-Ya0" id="wDw-vr-5L1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Club Search" id="jPc-hq-fuT"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="searchBar" destination="oJP-dA-1YV" id="rmX-my-8uC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EF6-Zh-LYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mlb-tX-6Lf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ry-At-kNo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7EB-zB-0so">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dpu-mc-Ya0" kind="relationship" relationship="rootViewController" id="IrU-ER-U4X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vr1-sm-yBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24" y="423"/>
+        </scene>
+    </scenes>
+</document>

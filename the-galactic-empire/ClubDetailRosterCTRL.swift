@@ -1,5 +1,5 @@
 //
-//  ClubSearchCTRL.swift
+//  ClubDetailRosterCTRL.swift
 //  the-galactic-empire
 //
 //  Created by grobinson on 8/17/15.
@@ -10,18 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
+class ClubDetailRosterCTRL: UITableViewController {
     
-    var clubs: [Club] = []
+    var club: Club!
     
-    var tap = UITapGestureRecognizer()
+    var roster: [JSON] = []
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
+        getRoster()
         
     }
 
@@ -40,52 +38,58 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return clubs.count
+        return roster.count
         
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! ClubSearchCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! ClubDetailRosterCell
         
-        let club = clubs[indexPath.row]
+        let person = roster[indexPath.row]
         
-        cell.nameTXT.text = club.name
-        cell.recordTXT.text = "\(club.wins)-\(club.losses)-\(club.otl)"
-        cell.divisionTXT.text = "Division: \(club.division)"
+        cell.playerNameTXT.text = person["personaName"].stringValue
+        cell.gamertagTXT.text = person["playername"].stringValue
+        cell.gpTXT.text = person["totalgp"].stringValue
+        cell.gTXT.text = person["skgoals"].stringValue
+        cell.aTXT.text = person["skassists"].stringValue
+        cell.pTXT.text = person["skpoints"].stringValue
+        cell.plusMinusTXT.text = person["skplusmin"].stringValue
+        
+        switch person["favoritePosition"].stringValue {
+            case "Center":
+                cell.posTXT.text = "C"
+            case "Left wing":
+                cell.posTXT.text = "LW"
+            case "Right wing":
+                cell.posTXT.text = "RW"
+            case "Defensemen":
+                cell.posTXT.text = "D"
+            case "Goalie":
+                cell.posTXT.text = "G"
+            default:
+                cell.posTXT.text = ""
+        }
+        
+        if person["onlineStatus"].intValue == 1 {
+            
+            cell.online.on = true
+            
+        } else {
+            
+            cell.online.on = false
+            
+        }
         
         return cell
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let club = clubs[indexPath.row]
-        
-        var nav = UINavigationController()
-        
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("club_detail") as! ClubDetailCTRL
-        
-        vc.club = club
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-        searchClubs()
-        dismissKeyboard()
-        
-    }
-    
-    func searchClubs() -> Bool {
-        
-        if searchBar.text == "" { return false }
+    func getRoster(){
         
         Loading.start()
         
-        let s = "https://www.easports.com/iframe/nhl14proclubs/api/platforms/xbox/clubsComplete/\(searchBar.text)"
+        let s = "https://www.easports.com/iframe/nhl14proclubs/api/platforms/xbox/clubs/\(club.id)/membersComplete"
         
         Alamofire.request(.GET, s.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!, parameters: nil)
             .responseJSON { request, response, data, error in
@@ -96,17 +100,15 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
                         
                         var json = JSON(data!)
                         
-                        var tmp: [Club] = []
+                        var tmp: [JSON] = []
                         
                         for (key,val) in json["raw"] {
                             
-                            let club = Club(json: val)
-                            
-                            tmp.append(club)
+                            tmp.append(val)
                             
                         }
                         
-                        self.clubs = tmp
+                        self.roster = tmp
                         
                         self.tableView.reloadData()
                         
@@ -128,28 +130,6 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
                 Loading.stop()
                 
         }
-        
-        return true
-        
-    }
-    
-    func dismissKeyboard(){
-        
-        searchBar.endEditing(true)
-        
-    }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        
-        tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        
-        self.tableView.addGestureRecognizer(tap)
-        
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        
-        self.tableView.removeGestureRecognizer(tap)
         
     }
 

@@ -3,24 +3,32 @@ import UIKit
 class Loading {
     
     static let backgroundColor = UIColor(red: 52.0/255.0, green: 73.0/255.0, blue: 94.0/255.0, alpha: 0.5)
+    
     static let fade = 0.1
     
     static var indicator: UIView = {
+        
         var view = UIView()
         let screen: CGRect = UIScreen.mainScreen().bounds
         var side = screen.width / 4
         var x = (screen.width / 2) - (side / 2)
         var y = (screen.height / 2) - (side / 2)
+        
         view.frame = CGRect(x: x, y: y, width: side, height: side)
         view.backgroundColor = backgroundColor
         view.layer.cornerRadius = 10
         view.alpha = 0.0
         view.tag = 1
+        
         let image = UIImage(named: "spinner.png")
         let imageView = UIImageView(image: image!)
+        
         imageView.frame = CGRect(x: side / 4, y: side / 4, width: side / 2, height: side / 2)
+        
         view.addSubview(imageView)
+        
         return view
+        
         }()
     
     static var animation: CABasicAnimation = {

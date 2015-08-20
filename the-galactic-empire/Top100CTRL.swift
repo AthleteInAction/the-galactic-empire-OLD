@@ -1,8 +1,8 @@
 //
-//  ClubSearchCTRL.swift
+//  Top100CTRL.swift
 //  the-galactic-empire
 //
-//  Created by grobinson on 8/17/15.
+//  Created by grobinson on 8/19/15.
 //  Copyright (c) 2015 wambl. All rights reserved.
 //
 
@@ -10,18 +10,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
+class Top100CTRL: UITableViewController {
     
-    var clubs: [Club] = []
-    
-    var tap = UITapGestureRecognizer()
+    var clubs: [JSON] = []
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
+        getData()
         
     }
 
@@ -46,13 +42,18 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! ClubSearchCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! Top100Cell
         
         let club = clubs[indexPath.row]
         
-        cell.nameTXT.text = club.name
-        cell.recordTXT.text = "\(club.wins)-\(club.losses)-\(club.otl)"
-        cell.divisionTXT.text = "Division: \(club.division)"
+        let rank = indexPath.row + 1
+        
+        cell.rankTXT.text = "\(rank)"
+        cell.nameTXT.text = club["clubname"].stringValue
+        cell.ptsTXT.text = club["rank"].stringValue
+        cell.wTXT.text = club["wins"].stringValue
+        cell.lTXT.text = club["losses"].stringValue
+        cell.otlTXT.text = club["ties"].stringValue
         
         return cell
         
@@ -66,26 +67,28 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
         
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("club_detail") as! ClubDetailCTRL
         
-        vc.club = club
+        var c: Club = Club(json: club)
+        
+        c.name = club["clubname"].stringValue
+        c.id = club["clubId"].intValue
+        c.wins = club["wins"].stringValue.toInt()
+        c.losses = club["losses"].stringValue.toInt()
+        c.otl = club["ties"].stringValue.toInt()
+        c.division = 1
+        c.teamID = club["teamId"].intValue
+        c.points = club["rank"].stringValue.toInt()
+        
+        vc.club = c
         
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-        searchClubs()
-        dismissKeyboard()
-        
-    }
-    
-    func searchClubs() -> Bool {
-        
-        if searchBar.text == "" { return false }
+    func getData() -> Bool {
         
         Loading.start()
         
-        let s = "https://www.easports.com/iframe/nhl14proclubs/api/platforms/xbox/clubsComplete/\(searchBar.text)"
+        let s = "https://www.easports.com/iframe/nhl14proclubs/api/platforms/xbox/clubRankLeaderboard"
         
         Alamofire.request(.GET, s.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!, parameters: nil)
             .responseJSON { request, response, data, error in
@@ -96,17 +99,17 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
                         
                         var json = JSON(data!)
                         
-                        var tmp: [Club] = []
+                        var tmp: [JSON] = []
                         
-                        for (key,val) in json["raw"] {
-                            
-                            let club = Club(json: val)
+                        for (i,club) in json["raw"] {
                             
                             tmp.append(club)
                             
                         }
                         
                         self.clubs = tmp
+                        
+                        self.clubs.sort( {$0["rank"].stringValue.toInt() > $1["rank"].stringValue.toInt() } )
                         
                         self.tableView.reloadData()
                         
@@ -130,26 +133,6 @@ class ClubSearchCTRL: UITableViewController,UISearchBarDelegate {
         }
         
         return true
-        
-    }
-    
-    func dismissKeyboard(){
-        
-        searchBar.endEditing(true)
-        
-    }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        
-        tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        
-        self.tableView.addGestureRecognizer(tap)
-        
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        
-        self.tableView.removeGestureRecognizer(tap)
         
     }
 

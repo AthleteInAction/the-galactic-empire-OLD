@@ -17,6 +17,15 @@
 		ADD066801B81F12E00C4D99D /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0667F1B81F12E00C4D99D /* Club.swift */; };
 		ADD066821B81F8A000C4D99D /* ClubSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066811B81F8A000C4D99D /* ClubSearchCell.swift */; };
 		ADD066841B81FF7D00C4D99D /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066831B81FF7D00C4D99D /* Loading.swift */; };
+		ADD066881B828CDD00C4D99D /* ClubDetailCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066871B828CDD00C4D99D /* ClubDetailCTRL.swift */; };
+		ADD0668A1B8295C600C4D99D /* ClubDetailRosterCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066891B8295C600C4D99D /* ClubDetailRosterCTRL.swift */; };
+		ADD0668C1B829A2800C4D99D /* ClubDetailRosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0668B1B829A2800C4D99D /* ClubDetailRosterCell.swift */; };
+		ADD066901B82A61D00C4D99D /* ClubDetailRecentCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0668F1B82A61D00C4D99D /* ClubDetailRecentCTRL.swift */; };
+		ADD066921B82AC9000C4D99D /* RecentGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066911B82AC9000C4D99D /* RecentGameCell.swift */; };
+		ADD066951B82D7C100C4D99D /* StatsPopoverCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066941B82D7C100C4D99D /* StatsPopoverCTRL.swift */; };
+		ADD066991B833F8800C4D99D /* StatsPopoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066981B833F8800C4D99D /* StatsPopoverCell.swift */; };
+		ADD0669E1B85636A00C4D99D /* Top100CTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0669D1B85636A00C4D99D /* Top100CTRL.swift */; };
+		ADD066A01B856A6600C4D99D /* Top100Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0669F1B856A6600C4D99D /* Top100Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +54,15 @@
 		ADD0667F1B81F12E00C4D99D /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		ADD066811B81F8A000C4D99D /* ClubSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubSearchCell.swift; sourceTree = "<group>"; };
 		ADD066831B81FF7D00C4D99D /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		ADD066871B828CDD00C4D99D /* ClubDetailCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailCTRL.swift; sourceTree = "<group>"; };
+		ADD066891B8295C600C4D99D /* ClubDetailRosterCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailRosterCTRL.swift; sourceTree = "<group>"; };
+		ADD0668B1B829A2800C4D99D /* ClubDetailRosterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailRosterCell.swift; sourceTree = "<group>"; };
+		ADD0668F1B82A61D00C4D99D /* ClubDetailRecentCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubDetailRecentCTRL.swift; sourceTree = "<group>"; };
+		ADD066911B82AC9000C4D99D /* RecentGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGameCell.swift; sourceTree = "<group>"; };
+		ADD066941B82D7C100C4D99D /* StatsPopoverCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPopoverCTRL.swift; sourceTree = "<group>"; };
+		ADD066981B833F8800C4D99D /* StatsPopoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsPopoverCell.swift; sourceTree = "<group>"; };
+		ADD0669D1B85636A00C4D99D /* Top100CTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top100CTRL.swift; sourceTree = "<group>"; };
+		ADD0669F1B856A6600C4D99D /* Top100Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top100Cell.swift; sourceTree = "<group>"; };
 		B206D00A1D9172A40E725382 /* Pods-the-galactic-empire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-galactic-empire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-the-galactic-empire/Pods-the-galactic-empire.debug.xcconfig"; sourceTree = "<group>"; };
 		EFC4D0020E2F77DA1F0C420A /* Pods-the-galactic-empire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-galactic-empire.release.xcconfig"; path = "Pods/Target Support Files/Pods-the-galactic-empire/Pods-the-galactic-empire.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,14 +126,17 @@
 		ADD066521B81964900C4D99D /* the-galactic-empire */ = {
 			isa = PBXGroup;
 			children = (
+				ADD0669C1B85634F00C4D99D /* Top 100 */,
+				ADD066931B82D7A300C4D99D /* Popover */,
+				ADD066861B828CBC00C4D99D /* ClubDetail */,
 				ADD066551B81964900C4D99D /* AppDelegate.swift */,
 				ADD0667C1B81E8E100C4D99D /* ClubSearch */,
+				ADD066851B821CC100C4D99D /* Tools */,
 				ADD0665C1B81964900C4D99D /* Main.storyboard */,
 				ADD0665F1B81964900C4D99D /* Images.xcassets */,
 				ADD066571B81964900C4D99D /* the_galactic_empire.xcdatamodeld */,
 				ADD0667B1B81A1EE00C4D99D /* BRIDGE */,
 				ADD066531B81964900C4D99D /* Supporting Files */,
-				ADD066831B81FF7D00C4D99D /* Loading.swift */,
 			);
 			path = "the-galactic-empire";
 			sourceTree = "<group>";
@@ -161,6 +182,60 @@
 				ADD066811B81F8A000C4D99D /* ClubSearchCell.swift */,
 			);
 			name = ClubSearch;
+			sourceTree = "<group>";
+		};
+		ADD066851B821CC100C4D99D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				ADD066831B81FF7D00C4D99D /* Loading.swift */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		ADD066861B828CBC00C4D99D /* ClubDetail */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0668E1B82A5FE00C4D99D /* Recent */,
+				ADD0668D1B82A5EE00C4D99D /* Roster */,
+				ADD066871B828CDD00C4D99D /* ClubDetailCTRL.swift */,
+			);
+			name = ClubDetail;
+			sourceTree = "<group>";
+		};
+		ADD0668D1B82A5EE00C4D99D /* Roster */ = {
+			isa = PBXGroup;
+			children = (
+				ADD066891B8295C600C4D99D /* ClubDetailRosterCTRL.swift */,
+				ADD0668B1B829A2800C4D99D /* ClubDetailRosterCell.swift */,
+			);
+			name = Roster;
+			sourceTree = "<group>";
+		};
+		ADD0668E1B82A5FE00C4D99D /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0668F1B82A61D00C4D99D /* ClubDetailRecentCTRL.swift */,
+				ADD066911B82AC9000C4D99D /* RecentGameCell.swift */,
+			);
+			name = Recent;
+			sourceTree = "<group>";
+		};
+		ADD066931B82D7A300C4D99D /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				ADD066941B82D7C100C4D99D /* StatsPopoverCTRL.swift */,
+				ADD066981B833F8800C4D99D /* StatsPopoverCell.swift */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
+		ADD0669C1B85634F00C4D99D /* Top 100 */ = {
+			isa = PBXGroup;
+			children = (
+				ADD0669D1B85636A00C4D99D /* Top100CTRL.swift */,
+				ADD0669F1B856A6600C4D99D /* Top100Cell.swift */,
+			);
+			name = "Top 100";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,11 +388,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADD066951B82D7C100C4D99D /* StatsPopoverCTRL.swift in Sources */,
 				ADD066591B81964900C4D99D /* the_galactic_empire.xcdatamodeld in Sources */,
 				ADD0667E1B81E95300C4D99D /* ClubSearchCTRL.swift in Sources */,
+				ADD066921B82AC9000C4D99D /* RecentGameCell.swift in Sources */,
+				ADD066901B82A61D00C4D99D /* ClubDetailRecentCTRL.swift in Sources */,
+				ADD0668A1B8295C600C4D99D /* ClubDetailRosterCTRL.swift in Sources */,
+				ADD0669E1B85636A00C4D99D /* Top100CTRL.swift in Sources */,
 				ADD066821B81F8A000C4D99D /* ClubSearchCell.swift in Sources */,
 				ADD066561B81964900C4D99D /* AppDelegate.swift in Sources */,
+				ADD0668C1B829A2800C4D99D /* ClubDetailRosterCell.swift in Sources */,
+				ADD066991B833F8800C4D99D /* StatsPopoverCell.swift in Sources */,
 				ADD066841B81FF7D00C4D99D /* Loading.swift in Sources */,
+				ADD066A01B856A6600C4D99D /* Top100Cell.swift in Sources */,
+				ADD066881B828CDD00C4D99D /* ClubDetailCTRL.swift in Sources */,
 				ADD066801B81F12E00C4D99D /* Club.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

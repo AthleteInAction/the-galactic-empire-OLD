@@ -66,9 +66,15 @@ class StatsPopoverCTRL: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let vs = match.body["clubs"]["\(match.awayID)"]["details"]["name"].stringValue
-        
-        return "vs \(vs)"
+        if id == match.homeID {
+            
+            return "vs \(match.awayID)"
+            
+        } else {
+            
+            return "vs \(match.homeID)"
+            
+        }
         
     }
     

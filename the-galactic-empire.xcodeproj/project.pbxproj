@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		865D277A4E19AF4CADC26483 /* Pods_the_galactic_empire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4766D5D87E9685DE0DA7FA /* Pods_the_galactic_empire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		AD879AAF1B86D1CF002C96CA /* LoginCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD879AAE1B86D1CF002C96CA /* LoginCTRL.swift */; };
+		AD879AB21B86D39B002C96CA /* MenuCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD879AB11B86D39B002C96CA /* MenuCTRL.swift */; };
+		AD879AB41B86D9B6002C96CA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD879AB31B86D9B6002C96CA /* Alert.swift */; };
+		AD879AB91B86DE40002C96CA /* FeedCTRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD879AB81B86DE40002C96CA /* FeedCTRL.swift */; };
+		AD879ABB1B880D55002C96CA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD879ABA1B880D55002C96CA /* MessageCell.swift */; };
 		ADD066561B81964900C4D99D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD066551B81964900C4D99D /* AppDelegate.swift */; };
 		ADD066591B81964900C4D99D /* the_galactic_empire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADD066571B81964900C4D99D /* the_galactic_empire.xcdatamodeld */; };
 		ADD0665E1B81964900C4D99D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD0665C1B81964900C4D99D /* Main.storyboard */; };
@@ -40,6 +45,11 @@
 
 /* Begin PBXFileReference section */
 		9A4766D5D87E9685DE0DA7FA /* Pods_the_galactic_empire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_galactic_empire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD879AAE1B86D1CF002C96CA /* LoginCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCTRL.swift; sourceTree = "<group>"; };
+		AD879AB11B86D39B002C96CA /* MenuCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCTRL.swift; sourceTree = "<group>"; };
+		AD879AB31B86D9B6002C96CA /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		AD879AB81B86DE40002C96CA /* FeedCTRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCTRL.swift; sourceTree = "<group>"; };
+		AD879ABA1B880D55002C96CA /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		ADD066501B81964900C4D99D /* the-galactic-empire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "the-galactic-empire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD066541B81964900C4D99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADD066551B81964900C4D99D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +113,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD879AAD1B86CE7F002C96CA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AD879AAE1B86D1CF002C96CA /* LoginCTRL.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		AD879AB01B86D37C002C96CA /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AD879AB11B86D39B002C96CA /* MenuCTRL.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		AD879AB51B86DE0A002C96CA /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				AD879AB81B86DE40002C96CA /* FeedCTRL.swift */,
+				AD879ABA1B880D55002C96CA /* MessageCell.swift */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
 		ADD066471B81964900C4D99D = {
 			isa = PBXGroup;
 			children = (
@@ -126,10 +161,13 @@
 		ADD066521B81964900C4D99D /* the-galactic-empire */ = {
 			isa = PBXGroup;
 			children = (
+				AD879AB51B86DE0A002C96CA /* Feed */,
+				ADD066551B81964900C4D99D /* AppDelegate.swift */,
+				AD879AB01B86D37C002C96CA /* Menu */,
+				AD879AAD1B86CE7F002C96CA /* Login */,
 				ADD0669C1B85634F00C4D99D /* Top 100 */,
 				ADD066931B82D7A300C4D99D /* Popover */,
 				ADD066861B828CBC00C4D99D /* ClubDetail */,
-				ADD066551B81964900C4D99D /* AppDelegate.swift */,
 				ADD0667C1B81E8E100C4D99D /* ClubSearch */,
 				ADD066851B821CC100C4D99D /* Tools */,
 				ADD0665C1B81964900C4D99D /* Main.storyboard */,
@@ -188,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				ADD066831B81FF7D00C4D99D /* Loading.swift */,
+				AD879AB31B86D9B6002C96CA /* Alert.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -388,6 +427,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD879AB41B86D9B6002C96CA /* Alert.swift in Sources */,
+				AD879ABB1B880D55002C96CA /* MessageCell.swift in Sources */,
 				ADD066951B82D7C100C4D99D /* StatsPopoverCTRL.swift in Sources */,
 				ADD066591B81964900C4D99D /* the_galactic_empire.xcdatamodeld in Sources */,
 				ADD0667E1B81E95300C4D99D /* ClubSearchCTRL.swift in Sources */,
@@ -395,10 +436,13 @@
 				ADD066901B82A61D00C4D99D /* ClubDetailRecentCTRL.swift in Sources */,
 				ADD0668A1B8295C600C4D99D /* ClubDetailRosterCTRL.swift in Sources */,
 				ADD0669E1B85636A00C4D99D /* Top100CTRL.swift in Sources */,
+				AD879AB21B86D39B002C96CA /* MenuCTRL.swift in Sources */,
 				ADD066821B81F8A000C4D99D /* ClubSearchCell.swift in Sources */,
+				AD879AAF1B86D1CF002C96CA /* LoginCTRL.swift in Sources */,
 				ADD066561B81964900C4D99D /* AppDelegate.swift in Sources */,
 				ADD0668C1B829A2800C4D99D /* ClubDetailRosterCell.swift in Sources */,
 				ADD066991B833F8800C4D99D /* StatsPopoverCell.swift in Sources */,
+				AD879AB91B86DE40002C96CA /* FeedCTRL.swift in Sources */,
 				ADD066841B81FF7D00C4D99D /* Loading.swift in Sources */,
 				ADD066A01B856A6600C4D99D /* Top100Cell.swift in Sources */,
 				ADD066881B828CDD00C4D99D /* ClubDetailCTRL.swift in Sources */,
@@ -532,6 +576,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "the-galactic-empire/the-galactic-empire-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -547,6 +592,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "the-galactic-empire/the-galactic-empire-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

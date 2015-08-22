@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import Parse
 
+var feed: FeedCTRL!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,7 +24,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientKey: "rJ4CB7XJgFkJpdeNSRAKKFcu92eEU7yTto6p44OL"
         )
         
-        sleep(5)
+//        sleep(5)
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+//        PFUser.logOut()
+        
+        if PFUser.currentUser() != nil {
+            
+            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("menu_ctrl") as! MenuCTRL
+            var nav = UINavigationController(rootViewController: initialViewController)
+            self.window?.rootViewController = nav
+            self.window?.makeKeyAndVisible()
+            
+            feed = storyboard.instantiateViewControllerWithIdentifier("feed_ctrl") as! FeedCTRL
+            
+        } else {
+            
+            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("login_ctrl") as! LoginCTRL
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+            feed = storyboard.instantiateViewControllerWithIdentifier("feed_ctrl") as! FeedCTRL
+            
+        }
         
         return true
         

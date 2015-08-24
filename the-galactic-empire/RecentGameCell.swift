@@ -59,4 +59,19 @@ class RecentGameCell: UITableViewCell {
         
     }
     
+    @IBAction func teamTapped(sender: AnyObject) {
+        
+        var vc = v.storyboard?.instantiateViewControllerWithIdentifier("club_detail") as! ClubDetailCTRL
+        
+        vc.club = Club(json: nil)
+        vc.club.id = match.awayID
+        vc.club.name = match.awayName
+        vc.club.teamID = match.awayTID
+        vc.club.img = match.awayImage
+        vc.getRecord()
+        
+        v.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }

@@ -22,9 +22,21 @@ class ClubDetailCTRL: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = club.name
+        
+        img.contentMode = UIViewContentMode.ScaleAspectFit
+        
         dispatch_async(dispatch_get_main_queue()) {
             
-            self.setData()
+            if self.club.teamID == nil {
+                
+                self.setTeamID()
+                
+            } else {
+                
+                self.setImage()
+                
+            }
             
         }
         
@@ -43,7 +55,8 @@ class ClubDetailCTRL: UITableViewController {
         
     }
     
-    func setData(){
+    func setTeamID(){
+        println("SET TEAM ID")
         
         self.title = club.name
         
@@ -87,19 +100,30 @@ class ClubDetailCTRL: UITableViewController {
     }
     
     func setImage(){
+        println("SET IMAGE")
         
-        let s = "https://www.easports.com/iframe/nhl14proclubs/bundles/nhl/dist/images/crests/d\(club.teamID).png"
-        
-        if let url = NSURL(string: s) {
+        if club.img == nil {
             
-            if let data = NSData(contentsOfURL: url){
+            let s = "https://www.easports.com/iframe/nhl14proclubs/bundles/nhl/dist/images/crests/d\(club.teamID!).png"
+            println(s)
+            
+            if let url = NSURL(string: s) {
                 
-                img.contentMode = UIViewContentMode.ScaleAspectFit
-                img.image = UIImage(data: data)
+                if let data = NSData(contentsOfURL: url){
+                    println("IMG")
+                    img.image = UIImage(data: data)
+                    
+                }
                 
             }
             
+        } else {
+            
+            img.image = club.img
+            
         }
+        
+        self.loader.stopAnimating()
         
     }
     
@@ -121,6 +145,48 @@ class ClubDetailCTRL: UITableViewController {
             
         }
         
+    }
+    
+    func getRecord(){
+        
+        println("GET RECORD")
+        let s = "https://www.easports.com/iframe/nhl14proclubs/api/platforms/xbox/clubs/\(club.id)/stats"
+        
+        Alamofire.request(.GET, s.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!, parameters: nil)
+            .responseJSON { request, response, data, error in
+                
+                if error == nil {
+                    
+                    if response?.statusCode == 200 {
+                        
+                        let json = JSON(data!)
+                        
+                        let t = json["raw"]["\(self.club.id)"] as JSON
+                        
+                        self.club.wins = t["wins"].stringValue.toInt()
+                        self.club.losses = t["losses"].stringValue.toInt()
+                        self.club.otl = t["otl"].stringValue.toInt()
+                        self.club.division = t["curDivision"].stringValue.toInt()
+                        
+                        self.recordTXT.text = "\(self.club.wins) - \(self.club.losses) - \(self.club.otl)"
+                        
+                    } else {
+                        
+                        println("Status Code Error: \(response?.statusCode)")
+                        println(request)
+                        
+                    }
+                    
+                } else {
+                    
+                    println("Error!")
+                    println(error)
+                    println(request)
+                    
+                }
+                
+        }
+    
     }
 
 }

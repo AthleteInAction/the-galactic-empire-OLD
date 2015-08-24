@@ -1,3 +1,4 @@
+import Alamofire
 import SwiftyJSON
 
 class Club {
@@ -9,21 +10,34 @@ class Club {
     var losses: Int!
     var otl: Int!
     var division: Int!
-    var teamID: Int!
+    var teamID: Int?
+    var region: String!
+    var needsUpdate: Bool = true
+    var img: UIImage?
+    
+    private var regions: [String] = ["EAST","WEST"]
     
     var recent: [Match] = []
     
     init(
-        json _club: JSON
+        json _club: JSON?
     ){
         
-        id = _club["clubId"].stringValue.toInt()
-        points = _club["currentPoints"].stringValue.toInt()
-        name = _club["name"].stringValue
-        wins = _club["wins"].intValue
-        losses = _club["losses"].intValue
-        otl = _club["otl"].intValue
-        division = _club["curDivision"].stringValue.toInt()
+        if let club = _club {
+            
+            id = club["clubId"].stringValue.toInt()
+            points = club["currentPoints"].stringValue.toInt()
+            name = club["name"].stringValue
+            wins = club["wins"].intValue
+            losses = club["losses"].intValue
+            otl = club["otl"].intValue
+            division = club["curDivision"].stringValue.toInt()
+            
+        } else {
+            
+            
+            
+        }
         
     }
     
@@ -41,6 +55,51 @@ class Club {
         
         recent.sort({ $0.timestamp > $1.timestamp })
     
+    }
+    
+    func getRecord(){
+        
+        let s = "https://www.easports.com/iframe/nhl14proclubs/api/platforms/xbox/clubs/\(id)/stats"
+        
+        Alamofire.request(.GET, s.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!, parameters: nil)
+            .responseJSON { request, response, data, error in
+                
+                if error == nil {
+                    
+                    if response?.statusCode == 200 {
+                        
+                        let json = JSON(data!)
+                        
+                        let t = json["raw"]["\(self.id)"] as JSON
+                        
+                        self.wins = t["wins"].stringValue.toInt()
+                        self.losses = t["losses"].stringValue.toInt()
+                        self.otl = t["otl"].stringValue.toInt()
+                        self.division = t["curDivision"].stringValue.toInt()
+                        
+                    } else {
+                        
+                        println("Status Code Error: \(response?.statusCode)")
+                        println(request)
+                        
+                    }
+                    
+                } else {
+                    
+                    println("Error!")
+                    println(error)
+                    println(request)
+                    
+                }
+                
+        }
+        
+    }
+    
+    func update(){
+        
+        getRecord()
+        
     }
     
 }

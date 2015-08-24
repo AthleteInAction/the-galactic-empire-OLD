@@ -68,11 +68,11 @@ class StatsPopoverCTRL: UITableViewController {
         
         if id == match.homeID {
             
-            return "vs \(match.awayID)"
+            return "vs \(match.awayName)"
             
         } else {
             
-            return "vs \(match.homeID)"
+            return "vs \(match.homeName)"
             
         }
         
